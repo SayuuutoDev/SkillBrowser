@@ -1,29 +1,96 @@
 /* =========================
+   GLOBAL RESET + COLOR SAFETY
+========================= */
+
+:root {
+  color-scheme: light;
+
+  --bg-main: #f5f6fa;
+  --bg-card: #ffffff;
+  --bg-soft: #ffffffee;
+
+  --text-main: #111827;
+  --text-secondary: #374151;
+  --text-muted: #555555;
+
+  --border: #d1d5db;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+
+  background-color: var(--bg-main);
+  color: var(--text-main);
+
+  font-family: Arial, sans-serif;
+
+  -webkit-text-size-adjust: 100%;
+  text-rendering: optimizeLegibility;
+}
+
+/* Prevent browser autofill / mobile overrides */
+input,
+textarea,
+select,
+button {
+  font: inherit;
+  color: var(--text-main);
+  background-color: #ffffff;
+
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+/* Safari autofill fix */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus {
+  -webkit-text-fill-color: var(--text-main);
+  transition: background-color 9999s ease-in-out 0s;
+}
+
+/* =========================
    BASE LAYOUT
 ========================= */
+
 .container {
   max-width: 1200px;
   margin: auto;
   padding: 20px;
-  font-family: Arial, sans-serif;
-  background: #f5f6fa;
+
+  background-color: var(--bg-main);
+  color: var(--text-main);
 }
 
 .title {
   font-size: 28px;
   font-weight: bold;
   margin-bottom: 15px;
+
+  color: var(--text-main);
 }
 
 /* =========================
    LEGEND
 ========================= */
+
 .legend {
-  background: #ffffff;
-  border: 1px solid #ddd;
+  background-color: var(--bg-card);
+  border: 1px solid var(--border);
+
   padding: 15px;
   border-radius: 10px;
   margin-bottom: 20px;
+
+  color: var(--text-main);
 }
 
 .legend-section {
@@ -41,40 +108,50 @@
   padding: 4px 8px;
   border-radius: 6px;
   font-size: 12px;
+
+  color: var(--text-main);
 }
 
 .legend-border {
   padding: 4px 8px;
   border-radius: 6px;
   font-size: 12px;
+
   border: 2px solid;
+  color: var(--text-main);
 }
 
 /* =========================
    CONTROLS
 ========================= */
+
 .controls {
   display: flex;
   gap: 10px;
   margin-bottom: 10px;
 }
 
-.search {
+.search,
+select {
   flex: 1;
+
   padding: 8px;
+
   border-radius: 6px;
-  border: 1px solid #ccc;
+  border: 1px solid #cccccc;
+
+  background-color: #ffffff;
+  color: var(--text-main);
 }
 
-select {
-  padding: 8px;
-  border-radius: 6px;
-  border: 1px solid #ccc;
+.search::placeholder {
+  color: #6b7280;
 }
 
 /* =========================
    TOGGLE BUTTONS
 ========================= */
+
 .toggle {
   display: flex;
   gap: 10px;
@@ -83,25 +160,30 @@ select {
 
 .toggle-btn {
   padding: 6px 12px;
+
   border: none;
-  background: #ddd;
-  cursor: pointer;
   border-radius: 6px;
-  transition: background 0.2s;
+
+  background-color: #dddddd;
+  color: var(--text-main);
+
+  cursor: pointer;
+  transition: background-color 0.2s ease;
 }
 
 .toggle-btn:hover {
-  background: #bbb;
+  background-color: #bbbbbb;
 }
 
 .active-btn {
-  background: #222;
-  color: white;
+  background-color: #222222;
+  color: #ffffff;
 }
 
 /* =========================
    GRID
 ========================= */
+
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -111,22 +193,35 @@ select {
 /* =========================
    CARD
 ========================= */
+
 .card {
   padding: 16px;
+
   border-radius: 14px;
   border: 2px solid transparent;
-  transition: all 0.2s ease;
+
+  background-color: var(--bg-card);
+  color: var(--text-main);
+
+  background-clip: padding-box;
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+
   cursor: pointer;
 }
 
 .card:hover {
   transform: scale(1.02);
+
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
 }
 
 /* =========================
    CARD HEADER
 ========================= */
+
 .card-header {
   display: flex;
   justify-content: space-between;
@@ -136,89 +231,119 @@ select {
 .skill-title {
   font-size: 18px;
   font-weight: bold;
+
+  color: var(--text-main);
 }
 
 /* =========================
-   TYPE (ACTIVE / PASSIVE)
+   TYPE
 ========================= */
+
 .type {
   margin: 6px 0;
-  font-size: 13px;
-  font-weight: bold;
+
+  display: inline-block;
+
   padding: 4px 8px;
   border-radius: 6px;
-  display: inline-block;
+
+  font-size: 13px;
+  font-weight: bold;
 }
 
 .type-active {
-  background: #dbeafe;
+  background-color: #dbeafe;
   color: #1e40af;
 }
 
 .type-passive {
-  background: #dcfce7;
+  background-color: #dcfce7;
   color: #166534;
 }
 
 /* =========================
-   DESCRIPTION (KEY ELEMENT)
+   DESCRIPTION
 ========================= */
+
 .description-box {
-  background: #ffffff;
-  border-left: 4px solid #333;
+  background-color: #ffffff;
+
+  border-left: 4px solid #333333;
+
   padding: 10px;
   margin: 10px 0;
-  font-size: 14px;
+
   border-radius: 6px;
+
+  font-size: 14px;
   line-height: 1.4;
+
+  color: var(--text-main);
 }
 
 /* =========================
    META
 ========================= */
+
 .meta {
-  font-size: 12px;
-  color: #555;
   margin-bottom: 4px;
+
+  font-size: 12px;
+  color: var(--text-muted);
 }
 
 .cooldown {
   font-size: 12px;
-  color: #333;
+  color: var(--text-secondary);
 }
 
 /* =========================
    EXPANDED SECTION
 ========================= */
+
 .expand {
   margin-top: 12px;
   padding: 10px;
-  background: #ffffffee;
+
+  background-color: var(--bg-soft);
+
   border-radius: 8px;
-  border-top: 1px solid #ccc;
+  border-top: 1px solid #cccccc;
+
+  color: var(--text-main);
+
   animation: fadeIn 0.2s ease-in-out;
 }
 
 .expand h4 {
   margin-bottom: 6px;
+
   font-size: 14px;
+  color: var(--text-main);
 }
 
 .expand ul {
   padding-left: 18px;
+
   font-size: 13px;
+  color: var(--text-main);
 }
 
 .expand li {
   margin-bottom: 4px;
+  line-height: 1.4;
 }
 
-/* Animation */
+/* =========================
+   ANIMATION
+========================= */
+
 @keyframes fadeIn {
   from {
     opacity: 0;
     transform: translateY(-5px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -228,50 +353,55 @@ select {
 /* =========================
    ALIGNMENT BADGES
 ========================= */
+
 .badge {
   padding: 3px 8px;
+
   border-radius: 6px;
+
   font-size: 12px;
   font-weight: bold;
 }
 
 .align-r {
-  background: #fef3c7;
+  background-color: #fef3c7;
   color: #92400e;
 }
 
 .align-n {
-  background: #e5e7eb;
+  background-color: #e5e7eb;
   color: #374151;
 }
 
 .align-d {
-  background: #fecaca;
+  background-color: #fecaca;
   color: #7f1d1d;
 }
 
 /* =========================
-   TIER COLORS (BACKGROUND)
+   TIER COLORS
 ========================= */
+
 .tier-mortal {
-  background: #f3f4f6;
+  background-color: #f3f4f6;
 }
 
 .tier-earth {
-  background: #e6f4ea;
+  background-color: #e6f4ea;
 }
 
 .tier-sky {
-  background: #e0ecff;
+  background-color: #e0ecff;
 }
 
 .tier-nascent {
-  background: #f5e8ff;
+  background-color: #f5e8ff;
 }
 
 /* =========================
    RARITY BORDERS
 ========================= */
+
 .rarity-common {
   border-color: #9ca3af;
 }
@@ -293,20 +423,19 @@ select {
 }
 
 /* =========================
-   EXTRA POLISH
+   MOBILE FIXES
 ========================= */
 
-/* subtle card depth */
-.card {
-  background-clip: padding-box;
-}
+@media (max-width: 768px) {
+  .controls {
+    flex-direction: column;
+  }
 
-/* better list readability */
-.expand li {
-  line-height: 1.4;
-}
+  .grid {
+    grid-template-columns: 1fr;
+  }
 
-/* smoother UI */
-* {
-  box-sizing: border-box;
+  .title {
+    font-size: 24px;
+  }
 }
