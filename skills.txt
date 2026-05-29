@@ -1,0 +1,292 @@
+{
+  "meta": {
+    "version": "1.0",
+    "description": "Cultivation Bot Skill & Progression Data Pack"
+  },
+
+  "realms": [
+    "Mortal",
+    "Qi Condensation",
+    "Foundation Establishment",
+    "Golden Core",
+    "Nascent Soul",
+    "Soul Formation",
+    "Void Refinement",
+    "Dao Integration",
+    "Tribulation",
+    "Ascendant"
+  ],
+
+  "sects": [
+    "Azure Cloud Sword Sect",
+    "Crimson Lotus Sect",
+    "Black Tortoise Pavilion",
+    "Thousand Herb Valley",
+    "Shadow Moon Hall",
+    "Blood Demon Cave",
+    "Boundless Dao Temple",
+    "Beggar Union"
+  ],
+
+  "rarities": {
+    "common": { "multiplier": 1.0 },
+    "uncommon": { "multiplier": 1.4 },
+    "rare": { "multiplier": 2.0 },
+    "epic": { "multiplier": 3.0 },
+    "legendary": { "multiplier": 5.0 },
+    "mythic": { "multiplier": 8.0 }
+  },
+
+  "skills": [
+    {
+      "id": "ember_palm",
+      "name": "Ember Palm",
+      "type": "active",
+      "rarity": "common",
+      "realm": "Mortal",
+      "sect": "Crimson Lotus Sect",
+      "load": 1,
+      "cost": 15,
+      "cooldown": 0,
+      "damage": {
+        "type": "external",
+        "scaling": 0.7
+      },
+      "effects": [
+        {
+          "type": "burn",
+          "chance": 0.15,
+          "duration": 3
+        }
+      ],
+      "upgrade": {
+        "rank5": { "burn_chance": 0.20 },
+        "rank10": {
+          "burn_chance": 0.25,
+          "bonus_vs_burning": 0.20
+        }
+      },
+      "source": ["shop", "crimson_lotus"]
+    },
+
+    {
+      "id": "sword_slash",
+      "name": "Sword Slash",
+      "type": "active",
+      "rarity": "common",
+      "realm": "Mortal",
+      "sect": "Azure Cloud Sword Sect",
+      "load": 1,
+      "cost": 10,
+      "cooldown": 0,
+      "damage": {
+        "type": "external",
+        "scaling": 0.9
+      },
+      "effects": [],
+      "upgrade": {
+        "rank5": { "crit_bonus": 0.10 },
+        "rank10": { "cooldown_reduction_on_crit": 1 }
+      },
+      "source": ["shop"]
+    },
+
+    {
+      "id": "qi_barrier",
+      "name": "Qi Barrier",
+      "type": "active",
+      "rarity": "common",
+      "realm": "Mortal",
+      "sect": "Black Tortoise Pavilion",
+      "load": 2,
+      "cost": 25,
+      "cooldown": 2,
+      "effects": [
+        {
+          "type": "shield",
+          "value": 0.25,
+          "duration": 2
+        }
+      ],
+      "upgrade": {
+        "rank5": { "shield_bonus": 0.10 },
+        "rank10": { "cleanse_on_break": true }
+      },
+      "source": ["shop"]
+    },
+
+    {
+      "id": "cleanse_breath",
+      "name": "Cleanse Breath",
+      "type": "active",
+      "rarity": "common",
+      "realm": "Mortal",
+      "sect": "Thousand Herb Valley",
+      "load": 2,
+      "cost": 25,
+      "cooldown": 3,
+      "effects": [
+        {
+          "type": "cleanse",
+          "amount": "all"
+        }
+      ],
+      "upgrade": {
+        "rank5": { "heal": 0.05 },
+        "rank10": { "debuff_resist_turns": 1 }
+      },
+      "source": ["shop"]
+    },
+
+    {
+      "id": "condensed_qi",
+      "name": "Condensed Qi",
+      "type": "active",
+      "rarity": "uncommon",
+      "realm": "Qi Condensation",
+      "sect": "Boundless Dao Temple",
+      "load": 3,
+      "cost": 35,
+      "cooldown": 3,
+      "effects": [
+        {
+          "type": "charge",
+          "next_turn_damage": {
+            "type": "internal",
+            "scaling": 1.8
+          }
+        }
+      ],
+      "upgrade": {
+        "rank5": { "uninterruptible": true },
+        "rank10": { "ignore_defense": 0.20 }
+      },
+      "source": ["dungeon", "sect"]
+    },
+
+    {
+      "id": "demonic_feast",
+      "name": "Demonic Feast",
+      "type": "passive",
+      "rarity": "rare",
+      "realm": "Foundation Establishment",
+      "sect": "Blood Demon Cave",
+      "load": 3,
+      "effects": [
+        {
+          "type": "lifesteal",
+          "value": 0.25,
+          "condition": "target_bleeding"
+        }
+      ],
+      "upgrade": {
+        "rank5": { "lifesteal": 0.30 },
+        "rank10": { "refresh_bleed": true }
+      },
+      "source": ["sect", "dungeon"]
+    },
+
+    {
+      "id": "last_resort",
+      "name": "Last Resort",
+      "type": "passive",
+      "rarity": "rare",
+      "realm": "Foundation Establishment",
+      "load": 4,
+      "effects": [
+        {
+          "type": "cheat_death",
+          "hp": 1,
+          "buff": {
+            "external": 1.0,
+            "internal": 1.0,
+            "duration": 3
+          },
+          "trigger": "once_per_fight"
+        }
+      ],
+      "upgrade": {
+        "rank5": { "duration": 4 },
+        "rank10": { "cleanse_on_trigger": true }
+      },
+      "source": ["dungeon"]
+    },
+
+    {
+      "id": "heavenly_healing",
+      "name": "Heavenly Healing",
+      "type": "passive",
+      "rarity": "rare",
+      "realm": "Foundation Establishment",
+      "sect": "Thousand Herb Valley",
+      "load": 4,
+      "effects": [
+        {
+          "type": "trigger_heal",
+          "threshold": 0.30,
+          "heal": 0.30
+        }
+      ],
+      "upgrade": {
+        "rank5": { "heal": 0.35 },
+        "rank10": { "damage_reduction": 0.20 }
+      },
+      "source": ["sect"]
+    },
+
+    {
+      "id": "beggars_mentality",
+      "name": "Beggar's Mentality",
+      "type": "passive",
+      "rarity": "common",
+      "realm": "Mortal",
+      "sect": "Beggar Union",
+      "load": 2,
+      "effects": [
+        {
+          "type": "immune",
+          "status": "stun"
+        },
+        {
+          "type": "heal_on_status",
+          "status": "stun",
+          "heal": 0.10,
+          "cooldown": 2
+        }
+      ],
+      "upgrade": {
+        "rank5": { "cooldown": 1 },
+        "rank10": { "reflect_stun_chance": 0.25 }
+      },
+      "source": ["sect"]
+    }
+  ],
+
+  "systems": {
+    "battle_qi": {
+      "start": 30,
+      "per_turn": 10,
+      "max": 100
+    },
+
+    "load_limits": {
+      "Mortal": 6,
+      "Qi Condensation": 8,
+      "Foundation Establishment": 10,
+      "Golden Core": 12,
+      "Nascent Soul": 14
+    },
+
+    "karma": {
+      "righteous": 100,
+      "neutral_min": -100,
+      "neutral_max": 100,
+      "demonic": -100
+    },
+
+    "drop_rules": {
+      "sealed_manual_if_higher_realm": true,
+      "max_realm_gap_for_full_drop": 2
+    }
+  }
+}
